@@ -1,11 +1,11 @@
 const input = document.getElementById("input")
 const grid = document.querySelector(".grid")
+const creator = document.querySelector("#creator")
 
 window.addEventListener('load', randomImage)
 
 input.addEventListener('keydown', function(event){
   if(event.key === 'Enter')
-  randomImage() = ''
   loadImg()
 })
 
@@ -19,6 +19,8 @@ function randomImage(){
         return img.json()
     }).then(imagedata => {
         images.setAttribute("src", imagedata.urls.regular)
+        creator.innerText = imagedata.user.name
+        creator.setAttribute("href", imagedata.user.portfolio_url)
     })
 
     
@@ -43,6 +45,9 @@ function loadImg(){
         imageArray [i].addEventListener('dblclick', function(){
             window.open(data.results[i].links.download,'_blank')
           })
+
+        creator.innerText = data.user.name
+        creator.setAttribute("href", data.user.portfolio_url)
         grid.appendChild(imageArray[i])
       }
   })
