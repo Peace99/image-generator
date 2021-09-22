@@ -1,6 +1,6 @@
 const input = document.getElementById("input")
 const grid = document.querySelector(".grid")
-const creator = document.querySelector("#creator")
+const creator = document.querySelector(".creator")
 
 window.addEventListener('load', randomImage)
 
@@ -46,8 +46,8 @@ function loadImg(){
             window.open(data.results[i].links.download,'_blank')
           })
 
-        creator.innerText = data.user.name
-        creator.setAttribute("href", data.user.portfolio_url)
+        creator.innerText = data.results[i].user.name
+        creator.setAttribute("href", data.results[i].user.portfolio_url)
         grid.appendChild(imageArray[i])
       }
   })
