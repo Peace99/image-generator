@@ -1,6 +1,7 @@
 const input = document.getElementById("input")
 const grid = document.querySelector(".grid")
 const creator = document.querySelector(".creator")
+const photographer = document.querySelectorAll(".photographer")
 
 window.addEventListener('load', randomImage)
 
@@ -41,13 +42,12 @@ function loadImg(){
       for (let i = 0; i < data.results.length; i++) {
         imageArray [i] = document.createElement('div');
         imageArray [i].className = 'img'
-        imageArray [i].style.backgroundImage = 'url('+data.results[i].urls.raw+')'
+        imageArray [i].style.backgroundImage = 'url('+data.results[i].urls.regular+')'
         imageArray [i].addEventListener('dblclick', function(){
             window.open(data.results[i].links.download,'_blank')
           })
 
-        creator.innerText = data.results[i].user.name
-        creator.setAttribute("href", data.results[i].user.portfolio_url)
+       
         grid.appendChild(imageArray[i])
       }
   })
