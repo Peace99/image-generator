@@ -1,7 +1,6 @@
 const input = document.getElementById("input")
 const grid = document.querySelector(".grid")
 const creator = document.querySelector(".creator")
-const photographer = document.querySelectorAll(".photographer")
 
 window.addEventListener('load', randomImage)
 
@@ -29,7 +28,7 @@ function randomImage(){
 
 function loadImg(){
   removeImg()
-  const url = 'https://api.unsplash.com/search/photos/?query='+input.value+'&per_page=12&client_id=M38Av8f5_FeX-4j62y4Zh2uDCW1cU9NAblOyZXeGbiY'
+  const url = 'https://api.unsplash.com/search/photos/?query='+input.value+'&per_page=16&client_id=M38Av8f5_FeX-4j62y4Zh2uDCW1cU9NAblOyZXeGbiY'
 
   fetch(url).then(res =>{
       if(res.ok)
@@ -40,13 +39,21 @@ function loadImg(){
   }).then(data => {
       const imageArray = []
       for (let i = 0; i < data.results.length; i++) {
+        const container = document.createElement('div')
         imageArray [i] = document.createElement('div');
-        imageArray [i].className = 'img'
-        imageArray [i].style.backgroundImage = 'url('+data.results[i].urls.regular+')'
-        imageArray [i].addEventListener('dblclick', function(){
+        const spanElement = document.createElement('span')
+        const anchorElement = document.createElement('a')
+        container.className = 'img'
+        container.style.backgroundImage = 'url('+data.results[i].urls.regular+')'
+        container.addEventListener('dblclick', function(){
             window.open(data.results[i].links.download,'_blank')
           })
-
+        spanElement.innerText = "Photo by "
+        anchorElement.innerText = data.results[i].user.name
+        anchorElement.setAttribute("href", data.results[i].user.portfolio_url)
+        spanElement.appendChild(anchorElement)
+        imageArray[i].appendChild(container)
+        imageArray[i].appendChild(spanElement)
        
         grid.appendChild(imageArray[i])
       }

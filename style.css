@@ -149,6 +149,19 @@ p {
 p :hover{
     background: goldenrod;
 }
-#creator {
+.creator {
+    color: skyblue;
+}
+
+span{
+    text-align: center;
+    font-size: 1rem;
+}
+
+span :hover{
+    background: white;
+}
+
+a {
     color: skyblue;
 }
