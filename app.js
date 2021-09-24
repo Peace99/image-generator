@@ -39,20 +39,20 @@ function loadImg(){
   }).then(data => {
       const imageArray = []
       for (let i = 0; i < data.results.length; i++) {
-        const container = document.createElement('div')
+        //const container = document.createElement('div')
         imageArray [i] = document.createElement('div');
         const spanElement = document.createElement('span')
         const anchorElement = document.createElement('a')
-        container.className = 'img'
-        container.style.backgroundImage = 'url('+data.results[i].urls.regular+')'
-        container.addEventListener('dblclick', function(){
+        imageArray[i].className = 'img'
+        imageArray[i].style.backgroundImage = 'url('+data.results[i].urls.regular+')'
+        imageArray[i].addEventListener('dblclick', function(){
             window.open(data.results[i].links.download,'_blank')
           })
         spanElement.innerText = "Photo by "
         anchorElement.innerText = data.results[i].user.name
         anchorElement.setAttribute("href", data.results[i].user.portfolio_url)
         spanElement.appendChild(anchorElement)
-        imageArray[i].appendChild(container)
+        //imageArray[i].appendChild(container)
         imageArray[i].appendChild(spanElement)
        
         grid.appendChild(imageArray[i])

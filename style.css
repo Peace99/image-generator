@@ -5,7 +5,7 @@
 }
 
 body{
-    font-family: 'Comfortaa', cursive;
+    font-family: 'Comfortaa', sans-serif;
     color: #eee;
     background: black;
 }
@@ -108,7 +108,7 @@ input:focus{
 }
 
 .img{
-    width: 450px;
+    width: 400px;
     height: 300px;
     margin-top: 15px;
     background-position: 50% 50%;
@@ -150,12 +150,13 @@ p :hover{
     background: goldenrod;
 }
 .creator {
-    color: skyblue;
+    color: orangered;
 }
 
 span{
     text-align: center;
     font-size: 1rem;
+    color: orangered;
 }
 
 span :hover{
@@ -163,5 +164,5 @@ span :hover{
 }
 
 a {
-    color: skyblue;
+    color: orangered;
 }
